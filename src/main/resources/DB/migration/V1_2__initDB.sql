@@ -13,8 +13,8 @@ PRIMARY KEY (id)
 CREATE TABLE question(
 id INT NOT NULL,
 question_text VARCHAR (256),
-qiestionnaire_id INT,
-CONSTRAINT questionnaire_fk FOREIGN KEY (qiestionnaire_id)REFERENCES questionnaire(id)
+questionnaire_id INT,
+CONSTRAINT questionnaire_fk FOREIGN KEY (questionnaire_id)REFERENCES questionnaire(id)
 );
 CREATE TABLE survey_session(
 id INT  NOT NULL,
