@@ -2,3 +2,7 @@
 target
 *.iml
 *.DS_Store
+.V1_1__initDB.sql
+.V1_2___initDB.sql
+.орлы.png
+
