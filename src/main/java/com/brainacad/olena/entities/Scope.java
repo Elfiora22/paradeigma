@@ -4,32 +4,34 @@ package com.brainacad.olena.entities;
  * Created by elenafostachuk on 10/18/17.
  */
 public class Scope {
-    private int id;
-    private String answer_type;
+    private Long id;
+    private String answerType;
     private String text;
-    private int question_id;
+    private Long questionId;
 
-    public  Scope(int id, String answer_type, String text, int question_id){
+    public Scope (){};
+
+    public  Scope(Long id, String answerType, String text, Long questionIdd){
         this.setId(id);
-        this.setAnswer_type(answer_type);
+        this.setAnswerType(answerType);
         this.setText(text);
-        this.setQuestion_id(question_id);
+        this.setQuestionId(questionId);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getAnswer_type() {
-        return answer_type;
+    public String getAnswerType() {
+        return answerType;
     }
 
-    public void setAnswer_type(String answer_type) {
-        this.answer_type = answer_type;
+    public void setAnswerType(String answerType) {
+        this.answerType = answerType;
     }
 
     public String getText() {
@@ -40,19 +42,19 @@ public class Scope {
         this.text = text;
     }
 
-    public int getQuestion_id() {
-        return question_id;
+    public Long getQuestionId() {
+        return questionId;
     }
 
-    public void setQuestion_id(int question_id) {
-        this.question_id = question_id;
+    public void setQuestionId(Long question_id) {
+        this.questionId = questionId;
     }
 
     @Override
     public String toString() {
         return "Scope {" + "Scope Id" + id +
-                "Answer type" + answer_type +
+                "Answer type" + answerType +
                 "Scope answer text" + text +
-                "Question ID" + question_id + "}";
+                "Question ID" + questionId + "}";
     }
 }

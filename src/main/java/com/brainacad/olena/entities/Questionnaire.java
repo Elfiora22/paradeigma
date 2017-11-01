@@ -4,19 +4,21 @@ package com.brainacad.olena.entities;
  * Created by elenafostachuk on 10/18/17.
  */
 public class Questionnaire {
-    private int id;
+    private Long id;
     private String title;
 
-    public Questionnaire(int id, String title){
+    public Questionnaire (){};
+
+    public Questionnaire(Long id, String title){
         this.setId(id);
         this.setTitle(title);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

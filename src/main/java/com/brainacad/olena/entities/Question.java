@@ -4,45 +4,47 @@ package com.brainacad.olena.entities;
  * Created by elenafostachuk on 10/18/17.
  */
 public class Question {
-    private int id;
-    private String question_text;
-    private int questionnaire_id;
+    private Long id;
+    private String questionText;
+    private Long questionnaireId;
 
-    public Question(int id, String question_text, int questionnaire_id){
+    public Question (){};
+
+    public Question(Long id, String questionText, Long questionnaireId){
         this.setId(id);
-        this.setQuestion_text(question_text);
-        this.setQuestionnaire_id(questionnaire_id);
+        this.setQuestionText(questionText);
+        this.setQuestionnaireId(questionnaireId);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getQuestion_text() {
-        return question_text;
+    public String getQuestionText() {
+        return questionText;
     }
 
-    public void setQuestion_text(String question_text) {
-        this.question_text = question_text;
+    public void setQuestionText(String question_text) {
+        this.questionText = questionText;
     }
 
-    public int getQuestionnaire_id() {
-        return questionnaire_id;
+    public Long getQuestionnaireId() {
+        return questionnaireId;
     }
 
-    public void setQuestionnaire_id(int questionnaire_id) {
-        this.questionnaire_id = questionnaire_id;
+    public void setQuestionnaireId(Long questionnaire_id) {
+        this.questionnaireId = questionnaireId;
     }
 
     @Override
     public String toString() {
         return "Question {" + "Question ID" + id +
-                "Question text" + question_text +
-                "Questionnaire ID" + questionnaire_id + "}";
+                "Question text" + questionText +
+                "Questionnaire ID" + questionnaireId + "}";
 
     }
 }

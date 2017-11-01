@@ -4,66 +4,68 @@ package com.brainacad.olena.entities;
  * Created by elenafostachuk on 10/18/17.
  */
 public class Answer {
-    private int id;
-    private String answer_text;
-    private int question_id;
-    private int scope_id;
-    private int survey_session_id;
+    private Long id;
+    private String answerText;
+    private Long questionId;
+    private Long scopeId;
+    private Long surveySessionId;
 
-    public Answer(int id, String answer_text, int question_id, int scope_id, int survey_session_id){
+    public Answer(){};
+
+    public Answer(Long id, String answerText, Long questionId, Long scopeId, Long surveySessionId){
         this.setId(id);
-        this.setAnswer_text(answer_text);
-        this.setQuestion_id(question_id);
-        this.setScope_id(scope_id);
-        this.setSurvey_session_id(survey_session_id);
+        this.setAnswerText(answerText);
+        this.setQuestionId(questionId);
+        this.setScopeId(scopeId);
+        this.setSurveySessionId(surveySessionId);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getAnswer_text() {
-        return answer_text;
+    public String getAnswerText() {
+        return answerText;
     }
 
-    public void setAnswer_text(String answer_text) {
-        this.answer_text = answer_text;
+    public void setAnswerText(String answeText) {
+        this.answerText = answerText;
     }
 
-    public int getQuestion_id() {
-        return question_id;
+    public Long getQuestionId() {
+        return questionId;
     }
 
-    public void setQuestion_id(int question_id) {
-        this.question_id = question_id;
+    public void setQuestionId(Long questionId) {
+        this.questionId = questionId;
     }
 
-    public int getScope_id() {
-        return scope_id;
+    public Long getScopeId() {
+        return scopeId;
     }
 
-    public void setScope_id(int scope_id) {
-        this.scope_id = scope_id;
+    public void setScopeId(Long scope_id) {
+        this.scopeId = scopeId;
     }
 
-    public int getSurvey_session_id() {
-        return survey_session_id;
+    public Long getSurveySessionId() {
+        return surveySessionId;
     }
 
-    public void setSurvey_session_id(int survey_session_id) {
-        this.survey_session_id = survey_session_id;
+    public void setSurveySessionId(Long surveySessionId) {
+        this.surveySessionId= surveySessionId;
     }
 
     @Override
     public String toString() {
-        return "Answer {" + "answer text" + answer_text +
-                "Question ID" + question_id +
-                "Scope Id"+ scope_id +
-                "Survey Session ID" + survey_session_id + "}";
+        return "Answer {" + "answer text" + answerText +
+                "Question ID" + questionId +
+                "Scope Id"+ scopeId +
+                "Survey Session ID" + surveySessionId + "}";
 
 
     }
