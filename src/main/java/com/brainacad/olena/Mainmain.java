@@ -5,15 +5,12 @@ import org.flywaydb.core.Flyway;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import static com.brainacad.olena.dao.DbUtils.*;
 
 /**
  * Created by elenafostachuk on 10/2/17.
  */
 public class Mainmain {
-    private static final  String URL= "url";
-    private static final  String USER ="user";
-    private static final  String PASSWORD = "password";
-
 
     public static void main(String[] args) throws IOException {
         Properties props = new Properties();
