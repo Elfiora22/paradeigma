@@ -28,19 +28,18 @@ public class AnswerDao {
         return answer;
     }
 
-    public void save(Answer answer){
+    public static void  saveAnswer(Answer answer) {
         Connection connection = getConnection();
-        try(PreparedStatement statement = connection.prepareStatement("INSERT  INTO answer VALUES(NULL,?,?,?,?,?)")) {
+        try (PreparedStatement statement = connection.prepareStatement("INSERT  INTO answer VALUES(NULL,?,?,?,?,?)")) {
             statement.setLong(1, Long.parseLong("id"));
-            statement.setString(2,"answer_text");
+            statement.setString(2, "answer_text");
             statement.setLong(3, Long.parseLong("question_id"));
             statement.setLong(4, Long.parseLong("scope_id"));
             statement.setLong(5, Long.parseLong("survey_session_id"));
             statement.executeUpdate();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public void  update(Answer answer) {
@@ -81,6 +80,4 @@ public class AnswerDao {
         }
 
     }
-
-
 }
