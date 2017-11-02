@@ -1,19 +1,16 @@
 package com.brainacad.olena.entities;
 
-import java.sql.Timestamp;
+import java.sql.*;
 
-/**
- * Created by elenafostachuk on 10/18/17.
- */
-public class Survey_session {
+public class SurveySession {
     private Long id;
     private Timestamp dateTime;
     private Long interviewerId;
     private Long questionnaireId;
 
-    public Survey_session(){};
+    public SurveySession(){};
 
-    public Survey_session(Long id, Timestamp dateTime, Long interviewerId, Long questionnaireId){
+    public SurveySession(Long id, Timestamp dateTime, Long interviewerId, Long questionnaireId){
         this.setId(id);
         this.setDateTime(dateTime);
         this.setInterviewerId(interviewerId);
@@ -28,11 +25,9 @@ public class Survey_session {
         this.id = id;
     }
 
-    public Timestamp getDate_time() {
-        return dateTime;
-    }
+    public Timestamp getDateTime(){return dateTime;}
 
-    public void setDateTime(Timestamp date_time) {
+    public void setDateTime(Timestamp dateTime) {
         this.dateTime = dateTime;
     }
 
@@ -60,3 +55,5 @@ public class Survey_session {
                 "Questionnaire ID" + questionnaireId + "}";
     }
 }
+
+
