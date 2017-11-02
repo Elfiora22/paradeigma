@@ -20,6 +20,7 @@ public class AnswerDao {
                 answer.setAnswerText(resultset1.getString("answer_text"));
                 answer.setQuestionId(resultset1.getLong("question"));
                 answer.setScopeId(resultset1.getLong("scope_id"));
+                answer.setSurveySessionId(resultset1.getLong("survey_session_id"));
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -29,11 +30,13 @@ public class AnswerDao {
 
     public void save(Answer answer){
         Connection connection = getConnection();
-        try(PreparedStatement statement =connection.prepareStatement("SAVEPOINT answer")) {
-            ResultSet resultSet2 = statement.executeQuery();
-            if (resultSet2.next()){
-                resultSet2.refreshRow();
-            }
+        try(PreparedStatement statement = connection.prepareStatement("INSERT  INTO answer VALUES(NULL,?,?,?,?,?)")) {
+            statement.setLong(1, Long.parseLong("id"));
+            statement.setString(2,"answer_text");
+            statement.setLong(3, Long.parseLong("question_id"));
+            statement.setLong(4, Long.parseLong("scope_id"));
+            statement.setLong(5, Long.parseLong("survey_session_id"));
+            statement.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -42,23 +45,37 @@ public class AnswerDao {
 
     public void  update(Answer answer) {
         Connection connection = getConnection();
-        try(PreparedStatement statement = connection.prepareStatement("INSERT INTO answer VALUES(?,?,?,?)")){
-            ResultSet resultSet3=statement.executeQuery();
-            if (resultSet3.next()){
-                resultSet3.updateRow();
-            }
-        }catch (SQLException e){
+        try(
+                PreparedStatement statement =
+                        connection.prepareStatement("UPDATE answer SET"+
+                                " answer_text=?," +
+                                " question_id=?," +
+                                " scope_id=?," +
+                                "survey_session_id=?" +
+                                "WHERE id=?") ) {
+            statement.setLong(1, Long.parseLong("id"));
+            statement.setString(2,"answer_text");
+            statement.setLong(3, Long.parseLong("question_id"));
+            statement.setLong(4, Long.parseLong("scope_id"));
+            statement.setLong(5, Long.parseLong("survey_session_id"));
+            statement.executeUpdate();
+
+        }catch (Exception e) {
             e.printStackTrace();
+
         }
     }
 
     public void delete(Answer answer){
         Connection connection =getConnection();
-        try(PreparedStatement statement =connection.prepareStatement("DELETE * FROM answer WHERE id =?")){
-            ResultSet resultSet4= statement.executeQuery();
-            if (resultSet4.next()){
-                resultSet4.deleteRow();
-            }
+        try(PreparedStatement statement =connection.prepareStatement("DELETE " +
+                "answer_text, " +
+                "question_id, " +
+                "scope_id, " +
+                "survey_session_id " +
+                "FROM  answer WHERE id=?")){
+            statement.executeUpdate();
+
         }catch (SQLException e){
             e.printStackTrace();
         }
