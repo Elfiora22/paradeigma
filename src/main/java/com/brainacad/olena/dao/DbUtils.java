@@ -31,7 +31,7 @@ public class DbUtils {
     public static Connection getConnection(){
         try {
             if (connection == null || !connection.isValid(500))
-                connection = DriverManager.getConnection("url", "user","password");
+                connection = DriverManager.getConnection(props.getProperty("url"), props.getProperty("user"),props.getProperty("password"));
         }catch (SQLException e) {
             throw new RuntimeException("Connection failed", e);
         }
