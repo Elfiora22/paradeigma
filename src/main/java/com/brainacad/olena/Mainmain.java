@@ -5,6 +5,7 @@ import org.flywaydb.core.Flyway;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.Properties;
 
 import static com.brainacad.olena.dao.DbUtils.PASSWORD;
@@ -16,26 +17,24 @@ import static com.brainacad.olena.dao.DbUtils.USER;
  */
 public class Mainmain {
 
-    public static void main(String[] args) throws  IOException {
+    public static void main(String[] args) throws IOException, SQLException {
         Properties props = new Properties();
-        try (InputStream stream = Mainmain.class.getClassLoader().getResourceAsStream("db.properties")) {
+        try (InputStream stream = com.brainacad.olena.Mainmain.class.getClassLoader().getResourceAsStream("db.properties")) {
             props.load(stream);
         }
-
-        Answer answer = new Answer();
-        Long id = Long.valueOf(12);
-        String answerText = "aaaaaaaa";
-        Long questionID = Long.valueOf(13);
-        Long scopeId = Long.valueOf(14);
-        Long surveySessionId = Long.valueOf(15);
-        AnswerDao.saveAnswer(answer);
-
         Flyway flyway = new Flyway();
         flyway.setDataSource(props.getProperty(URL),props.getProperty(USER), props.getProperty(PASSWORD));
         flyway.migrate();
-        
-    }
 
+        Answer answer = new Answer(12L, "aaa", 13L, 14L, 15L);
+        answer.setId(12L);
+        answer.setAnswerText("aaa");
+        answer.setQuestionId(13L);
+        answer.setScopeId(14L);
+        answer.setScopeId(15L);
+        answer.setSurveySessionId(16L);
+        AnswerDao.saveAnswer(answer);
+    }
 }
 
 
