@@ -4,7 +4,7 @@ import com.brainacad.olena.entities.Answer;
 
 import java.sql.*;
 
-import static com.brainacad.olena.dao.DbUtils.getConnection;
+import static com.brainacad.olena.dao.DbUtils.*;
 
 public class AnswerDao {
 
@@ -28,7 +28,7 @@ public class AnswerDao {
         return answer;
     }
 
-    public static void  saveAnswer(Answer answer) {
+    public static void  saveAnswer(Answer answer)throws SQLException {
         Connection connection = getConnection();
         try (PreparedStatement statement = connection.prepareStatement("INSERT  INTO answer VALUES(NULL,?,?,?,?,?)")) {
             statement.setLong(1, Long.parseLong("id"));
@@ -42,16 +42,11 @@ public class AnswerDao {
         }
     }
 
-    public void  update(Answer answer) {
+    public void  update(Answer answer)throws SQLException {
         Connection connection = getConnection();
-        try(
-                PreparedStatement statement =
-                        connection.prepareStatement("UPDATE answer SET"+
-                                " answer_text=?," +
-                                " question_id=?," +
-                                " scope_id=?," +
-                                "survey_session_id=?" +
-                                "WHERE id=?") ) {
+        try(PreparedStatement statement =
+                        connection.prepareStatement("UPDATE answer SET  answer_text=?, question_id=?, scope_id=?,survey_session_id=?WHERE id=?"))  {
+
             statement.setLong(1, Long.parseLong("id"));
             statement.setString(2,"answer_text");
             statement.setLong(3, Long.parseLong("question_id"));
@@ -65,14 +60,9 @@ public class AnswerDao {
         }
     }
 
-    public void delete(Answer answer){
-        Connection connection =getConnection();
-        try(PreparedStatement statement =connection.prepareStatement("DELETE " +
-                "answer_text, " +
-                "question_id, " +
-                "scope_id, " +
-                "survey_session_id " +
-                "FROM  answer WHERE id=?")){
+    public void delete(Answer answer)throws SQLException {
+        Connection connection = getConnection();
+        try(PreparedStatement statement =connection.prepareStatement(String.format("DELETE *answer_text, question_id, scope_id, survey_session_id FROM  answer WHERE id=?"))){
             statement.executeUpdate();
 
         }catch (SQLException e){
