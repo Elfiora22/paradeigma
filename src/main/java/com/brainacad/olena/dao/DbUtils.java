@@ -17,7 +17,7 @@ public class DbUtils {
     private static Connection connection;
     static {
         try (InputStream stream =
-                     DbUtils.class.getClassLoader().getResourceAsStream("db.properties")){
+                     com.brainacad.olena.dao.DbUtils.class.getClassLoader().getResourceAsStream("db.properties")){
 
         }catch (IOException e){
             throw new RuntimeException();
@@ -28,23 +28,21 @@ public class DbUtils {
         Runtime.getRuntime().addShutdownHook(thread);
     }
 
-    public static Connection getConnection(){
+    public static Connection getConnection()throws SQLException {
         try {
-            if (connection == null || !connection.isValid(500))
-                connection = DriverManager.getConnection(props.getProperty("url"), props.getProperty("user"),props.getProperty("password"));
-        }catch (SQLException e) {
-            throw new RuntimeException("Connection failed", e);
+            if (connection== null || !connection.isValid(500))
+                connection = DriverManager.getConnection(DbUtils.props.getProperty(URL), DbUtils.props.getProperty(USER), DbUtils.props.getProperty(PASSWORD));
+        }catch(SQLException e){
+            throw new RuntimeException("ups!",e);
         }
         return connection;
     }
-    private static void  closeConnection(){
+
+    private static void  closeConnection()throws SQLException {
         try{
-        if(connection!=null){
-            connection.close();
-        }
+        if(connection!=null) connection.close();
     }catch (SQLException e){
-        throw new RuntimeException("Connection failed", e);
+        throw new RuntimeException("ups!2", e);
         }
     }
-
 }
